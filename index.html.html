@@ -6,161 +6,1043 @@
     <title>Shaikh Mehndi Art | Mehndi Jo Dil Ko Chhu Jaye</title>
     <meta name="description" content="Shaikh Mehndi Art - Professional mehndi artist with 10 years experience. All patterns, home service across India. Book now!">
     <meta name="keywords" content="shaikh mehndi art, mehndi artist, bridal mehndi, henna artist, ujjain mehndi, dewas mehndi, home service mehndi">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
             --maroon: #800020;
+            --maroon-dark: #4a0012;
+            --maroon-light: #a3324d;
             --gold: #D4AF37;
+            --gold-light: #f0d878;
+            --gold-dark: #b8941f;
             --orange: #FF6B35;
+            --orange-light: #ff8c5a;
             --cream: #FFF8F0;
+            --cream-dark: #f5e6d3;
             --dark: #2C1810;
+            --dark-light: #4a2c1f;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--dark); line-height: 1.7; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: linear-gradient(135deg, #FFF8F0 0%, #f5e6d3 50%, #FFF8F0 100%); 
+            color: var(--dark); 
+            line-height: 1.7; 
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
 
-        /* Navigation */
-        nav { position: fixed; top: 0; width: 100%; background: rgba(128,0,32,0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 12px 0; box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--gold); font-weight: 700; }
-        .logo span { color: #fff; font-size: 0.9rem; display: block; }
-        .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a { color: #fff; text-decoration: none; font-weight: 500; transition: color 0.3s; font-size: 0.95rem; }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--cream); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(var(--gold), var(--maroon)); border-radius: 5px; }
+
+        /* PARTICLES */
+        .particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            width: 6px; height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* NAVIGATION */
+        nav { 
+            position: fixed; top: 0; width: 100%; 
+            background: linear-gradient(135deg, rgba(128,0,32,0.95), rgba(74,0,18,0.95)); 
+            backdrop-filter: blur(20px); 
+            z-index: 1000; 
+            padding: 15px 0; 
+            box-shadow: 0 4px 30px rgba(128,0,32,0.4);
+            border-bottom: 2px solid var(--gold);
+        }
+        .nav-container { 
+            max-width: 1200px; margin: 0 auto; 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 0 25px; 
+        }
+        .logo { 
+            font-size: 1.8rem; 
+            background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        .logo small { 
+            display: block; 
+            font-size: 0.75rem; 
+            color: rgba(255,255,255,0.8); 
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            letter-spacing: 2px;
+            -webkit-text-fill-color: rgba(255,255,255,0.8);
+        }
+        .nav-links { display: flex; gap: 35px; list-style: none; }
+        .nav-links a { 
+            color: rgba(255,255,255,0.9); 
+            text-decoration: none; 
+            font-weight: 500; 
+            transition: all 0.3s; 
+            font-size: 0.95rem;
+            position: relative;
+            padding: 5px 0;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--orange));
+            transition: width 0.3s;
+        }
         .nav-links a:hover { color: var(--gold); }
-        .mobile-menu { display: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+        .nav-links a:hover::after { width: 100%; }
+        .mobile-menu { display: none; color: var(--gold); font-size: 1.6rem; cursor: pointer; }
 
-        /* Hero */
-        .hero { min-height: 100vh; background: linear-gradient(135deg, var(--maroon) 0%, #4a0012 100%); display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 20px 60px; position: relative; overflow: hidden; }
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23D4AF37" stroke-width="0.5" opacity="0.1"/></svg>'); background-size: 80px; opacity: 0.3; }
-        .hero-content { position: relative; z-index: 1; max-width: 800px; }
-        .hero h1 { font-size: 3.5rem; color: #fff; margin-bottom: 15px; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
-        .hero .tagline { font-size: 1.5rem; color: var(--gold); font-style: italic; margin-bottom: 30px; }
-        .hero p { color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 10px; }
-        .hero-badges { display: flex; justify-content: center; gap: 20px; margin: 30px 0; flex-wrap: wrap; }
-        .badge { background: rgba(212,175,55,0.2); border: 1px solid var(--gold); color: var(--gold); padding: 8px 20px; border-radius: 50px; font-size: 0.9rem; }
-        .btn-primary { display: inline-block; background: var(--gold); color: var(--maroon); padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: all 0.3s; margin: 10px; box-shadow: 0 4px 15px rgba(212,175,55,0.4); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(212,175,55,0.6); }
-        .btn-whatsapp { background: #25D366; color: #fff; }
-        .btn-whatsapp:hover { background: #128C7E; }
+        /* HERO */
+        .hero { 
+            min-height: 100vh; 
+            background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 40%, #2a0008 100%); 
+            display: flex; align-items: center; justify-content: center; 
+            text-align: center; 
+            padding: 120px 20px 80px; 
+            position: relative; 
+            overflow: hidden;
+        }
+        .hero::before { 
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212,175,55,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,107,53,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(212,175,55,0.1) 0%, transparent 50%);
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 850px; }
 
-        /* Sections */
-        section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; font-size: 2.5rem; color: var(--maroon); margin-bottom: 15px; position: relative; }
-        .section-title::after { content: ''; display: block; width: 80px; height: 3px; background: var(--gold); margin: 15px auto; border-radius: 2px; }
-        .section-subtitle { text-align: center; color: #666; margin-bottom: 50px; font-size: 1.05rem; }
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(255,107,53,0.2));
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { box-shadow: 0 0 5px rgba(212,175,55,0.3); }
+            to { box-shadow: 0 0 20px rgba(212,175,55,0.6), 0 0 40px rgba(212,175,55,0.2); }
+        }
 
-        /* About */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-        .about-img { background: linear-gradient(135deg, var(--maroon), var(--orange)); border-radius: 20px; padding: 40px; text-align: center; color: #fff; min-height: 300px; display: flex; flex-direction: column; justify-content: center; }
-        .about-img i { font-size: 4rem; color: var(--gold); margin-bottom: 20px; }
-        .about-img h3 { font-size: 1.8rem; margin-bottom: 10px; }
-        .about-text h3 { font-size: 1.8rem; color: var(--maroon); margin-bottom: 20px; }
-        .about-text p { margin-bottom: 15px; color: #555; }
-        .experience-box { background: var(--gold); color: var(--maroon); padding: 20px; border-radius: 15px; text-align: center; margin-top: 20px; }
-        .experience-box .years { font-size: 3rem; font-weight: 700; font-family: 'Playfair Display', serif; }
+        .hero h1 { 
+            font-size: 4rem; 
+            color: #fff; 
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+        .hero .tagline { 
+            font-size: 1.8rem; 
+            color: var(--gold); 
+            font-style: italic; 
+            margin-bottom: 25px;
+            font-family: 'Cormorant Garamond', serif;
+            text-shadow: 0 0 30px rgba(212,175,55,0.3);
+        }
+        .hero-subtitle {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            font-weight: 300;
+        }
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        .hero-feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .hero-feature i {
+            font-size: 2rem;
+            color: var(--gold);
+            background: rgba(212,175,55,0.15);
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(212,175,55,0.3);
+        }
+        .hero-feature span {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
 
-        /* Services */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .service-card { background: #fff; border-radius: 20px; padding: 35px 25px; text-align: center; box-shadow: 0 5px 25px rgba(0,0,0,0.08); transition: all 0.3s; border: 2px solid transparent; }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); border-color: var(--gold); }
-        .service-card i { font-size: 3rem; color: var(--maroon); margin-bottom: 20px; }
-        .service-card h3 { color: var(--maroon); margin-bottom: 15px; font-size: 1.3rem; }
-        .service-card p { color: #666; font-size: 0.95rem; }
+        .btn-primary { 
+            display: inline-block; 
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark)); 
+            color: var(--maroon-dark); 
+            padding: 16px 45px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 1.05rem; 
+            transition: all 0.4s; 
+            margin: 10px; 
+            box-shadow: 0 4px 20px rgba(212,175,55,0.4);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        .btn-primary:hover::before { left: 100%; }
+        .btn-primary:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 8px 30px rgba(212,175,55,0.6);
+        }
+        .btn-whatsapp { 
+            background: linear-gradient(135deg, #25D366, #128C7E); 
+            color: #fff; 
+        }
+        .btn-whatsapp:hover { 
+            box-shadow: 0 8px 30px rgba(37,211,102,0.5);
+        }
 
-        /* Gallery */
-        .gallery-filters { text-align: center; margin-bottom: 30px; }
-        .filter-btn { background: transparent; border: 2px solid var(--maroon); color: var(--maroon); padding: 8px 25px; border-radius: 50px; margin: 5px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 500; transition: all 0.3s; }
-        .filter-btn.active, .filter-btn:hover { background: var(--maroon); color: #fff; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        .gallery-item { position: relative; border-radius: 15px; overflow: hidden; aspect-ratio: 1; background: linear-gradient(135deg, #f0e6d3, #e8d5b7); display: flex; align-items: center; justify-content: center; cursor: pointer; }
-        .gallery-item i { font-size: 3rem; color: var(--maroon); opacity: 0.5; }
-        .gallery-item span { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(128,0,32,0.9)); color: #fff; padding: 20px 15px 15px; font-weight: 600; }
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .divider-line {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold));
+        }
+        .divider-line:last-child {
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+        .divider i {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        /* SECTIONS */
+        section { 
+            padding: 100px 20px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            position: relative;
+            z-index: 1;
+        }
+        .section-title { 
+            text-align: center; 
+            font-size: 2.8rem; 
+            background: linear-gradient(135deg, var(--maroon), var(--maroon-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px; 
+            font-weight: 700;
+        }
+        .section-subtitle { 
+            text-align: center; 
+            color: var(--dark-light); 
+            margin-bottom: 60px; 
+            font-size: 1.3rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        /* ABOUT */
+        .about-section { background: linear-gradient(135deg, #fff 0%, var(--cream) 100%); }
+        .about-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 60px; 
+            align-items: center; 
+        }
+        .about-image-container {
+            position: relative;
+        }
+        .about-image-container::before {
+            content: '';
+            position: absolute;
+            top: -20px; left: -20px;
+            width: 100%; height: 100%;
+            border: 3px solid var(--gold);
+            border-radius: 25px;
+            z-index: 0;
+        }
+        .about-img { 
+            background: linear-gradient(135deg, var(--maroon), var(--orange)); 
+            border-radius: 25px; 
+            padding: 50px; 
+            text-align: center; 
+            color: #fff; 
+            min-height: 400px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 20px 60px rgba(128,0,32,0.3);
+        }
+        .about-img i { 
+            font-size: 5rem; 
+            color: var(--gold); 
+            margin-bottom: 25px;
+            text-shadow: 0 0 30px rgba(212,175,55,0.5);
+        }
+        .about-img h3 { 
+            font-size: 2.2rem; 
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .about-img p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .about-text h3 { 
+            font-size: 2rem; 
+            background: linear-gradient(135deg, var(--maroon), var(--maroon-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        .about-text p { 
+            margin-bottom: 18px; 
+            color: var(--dark-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        .experience-box { 
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark)); 
+            color: var(--maroon-dark); 
+            padding: 30px; 
+            border-radius: 20px; 
+            text-align: center; 
+            margin-top: 30px;
+            box-shadow: 0 10px 40px rgba(212,175,55,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .experience-box::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            animation: shimmer 3s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .experience-box .years { 
+            font-size: 3.5rem; 
+            font-weight: 800; 
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            z-index: 1;
+        }
+        .experience-box p {
+            position: relative;
+            z-index: 1;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* SERVICES */
+        .services-section {
+            background: linear-gradient(135deg, var(--cream) 0%, #fff 50%, var(--cream) 100%);
+            position: relative;
+        }
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, var(--cream), transparent);
+        }
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 35px; 
+        }
+        .service-card { 
+            background: linear-gradient(135deg, #fff, #fffaf5); 
+            border-radius: 25px; 
+            padding: 40px 30px; 
+            text-align: center; 
+            box-shadow: 0 10px 40px rgba(128,0,32,0.08); 
+            transition: all 0.4s; 
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--maroon), var(--gold), var(--orange));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover { 
+            transform: translateY(-12px); 
+            box-shadow: 0 25px 60px rgba(128,0,32,0.15); 
+            border-color: var(--gold);
+        }
+        .service-icon-wrapper {
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, rgba(128,0,32,0.1), rgba(212,175,55,0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            border: 2px solid rgba(212,175,55,0.3);
+            transition: all 0.4s;
+        }
+        .service-card:hover .service-icon-wrapper {
+            background: linear-gradient(135deg, var(--maroon), var(--maroon-light));
+            border-color: var(--gold);
+            transform: scale(1.1);
+        }
+        .service-card:hover .service-icon-wrapper i {
+            color: var(--gold);
+        }
+        .service-card i { 
+            font-size: 2.2rem; 
+            color: var(--maroon); 
+            transition: all 0.4s;
+        }
+        .service-card h3 { 
+            color: var(--maroon); 
+            margin-bottom: 18px; 
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        .service-card p { 
+            color: var(--dark-light); 
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* GALLERY */
+        .gallery-filters { 
+            text-align: center; 
+            margin-bottom: 40px; 
+        }
+        .filter-btn { 
+            background: transparent; 
+            border: 2px solid var(--maroon); 
+            color: var(--maroon); 
+            padding: 10px 30px; 
+            border-radius: 50px; 
+            margin: 8px; 
+            cursor: pointer; 
+            font-family: 'Poppins', sans-serif; 
+            font-weight: 500; 
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+        .filter-btn.active, .filter-btn:hover { 
+            background: linear-gradient(135deg, var(--maroon), var(--maroon-light)); 
+            color: #fff; 
+            border-color: var(--maroon);
+            box-shadow: 0 5px 20px rgba(128,0,32,0.3);
+            transform: translateY(-2px);
+        }
+        .gallery-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 25px; 
+        }
+        .gallery-item { 
+            position: relative; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            aspect-ratio: 1; 
+            background: linear-gradient(135deg, #f0e6d3, #e8d5b7, #f5e6d3); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 50px rgba(128,0,32,0.2);
+        }
+        .gallery-item i { 
+            font-size: 3.5rem; 
+            color: var(--maroon); 
+            opacity: 0.4;
+            transition: all 0.4s;
+        }
+        .gallery-item:hover i {
+            opacity: 0.7;
+            transform: scale(1.2);
+        }
+        .gallery-item span { 
+            position: absolute; 
+            bottom: 0; left: 0; right: 0; 
+            background: linear-gradient(transparent, rgba(128,0,32,0.95)); 
+            color: #fff; 
+            padding: 30px 20px 20px; 
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Booking */
-        .booking-section { background: linear-gradient(135deg, var(--maroon), #5a0018); border-radius: 30px; padding: 60px 40px; color: #fff; text-align: center; }
-        .booking-section h2 { color: var(--gold); font-size: 2.2rem; margin-bottom: 20px; }
-        .booking-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin: 40px 0; text-align: left; }
-        .booking-info-item { background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; border: 1px solid rgba(212,175,55,0.3); }
-        .booking-info-item i { color: var(--gold); font-size: 1.5rem; margin-bottom: 10px; }
-        .booking-info-item h4 { color: var(--gold); margin-bottom: 8px; }
-        .booking-info-item p { font-size: 0.95rem; opacity: 0.9; }
+        /* BOOKING */
+        .booking-section-wrapper {
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .booking-section { 
+            background: linear-gradient(135deg, var(--maroon), var(--maroon-dark), #2a0008); 
+            border-radius: 40px; 
+            padding: 80px 50px; 
+            color: #fff; 
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(128,0,32,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .booking-section::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(212,175,55,0.1) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .booking-section h2 { 
+            color: var(--gold); 
+            font-size: 2.5rem; 
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .booking-section > p {
+            position: relative;
+            z-index: 1;
+        }
+        .booking-info { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            gap: 30px; 
+            margin: 50px 0; 
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+        .booking-info-item { 
+            background: rgba(255,255,255,0.08); 
+            padding: 30px; 
+            border-radius: 20px; 
+            border: 1px solid rgba(212,175,55,0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+        .booking-info-item:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+        .booking-info-item i { 
+            color: var(--gold); 
+            font-size: 2rem; 
+            margin-bottom: 15px;
+            display: block;
+        }
+        .booking-info-item h4 { 
+            color: var(--gold); 
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+        .booking-info-item p { 
+            font-size: 0.95rem; 
+            opacity: 0.9;
+            line-height: 1.7;
+        }
 
-        /* Online Booking Form */
-        .booking-form { max-width: 600px; margin: 40px auto 0; background: rgba(255,255,255,0.1); padding: 40px; border-radius: 20px; border: 1px solid rgba(212,175,55,0.3); }
-        .form-group { margin-bottom: 20px; text-align: left; }
-        .form-group label { display: block; margin-bottom: 8px; color: var(--gold); font-weight: 500; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px 18px; border: 1px solid rgba(212,175,55,0.4); border-radius: 10px; background: rgba(255,255,255,0.9); font-family: 'Poppins', sans-serif; font-size: 1rem; color: var(--dark); }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 10px rgba(212,175,55,0.3); }
-        .form-group textarea { resize: vertical; min-height: 100px; }
+        .booking-form { 
+            max-width: 650px; 
+            margin: 50px auto 0; 
+            background: rgba(255,255,255,0.07); 
+            padding: 50px; 
+            border-radius: 30px; 
+            border: 1px solid rgba(212,175,55,0.3);
+            backdrop-filter: blur(20px);
+            position: relative;
+            z-index: 1;
+        }
+        .form-group { 
+            margin-bottom: 25px; 
+            text-align: left; 
+        }
+        .form-group label { 
+            display: block; 
+            margin-bottom: 10px; 
+            color: var(--gold); 
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .form-group input, .form-group select, .form-group textarea { 
+            width: 100%; 
+            padding: 16px 20px; 
+            border: 2px solid rgba(212,175,55,0.3); 
+            border-radius: 15px; 
+            background: rgba(255,255,255,0.95); 
+            font-family: 'Poppins', sans-serif; 
+            font-size: 1rem; 
+            color: var(--dark);
+            transition: all 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { 
+            outline: none; 
+            border-color: var(--gold); 
+            box-shadow: 0 0 20px rgba(212,175,55,0.2);
+            transform: translateY(-2px);
+        }
+        .form-group textarea { 
+            resize: vertical; 
+            min-height: 120px; 
+        }
 
         /* FAQ */
-        .faq-container { max-width: 800px; margin: 0 auto; }
-        .faq-item { background: #fff; border-radius: 15px; margin-bottom: 15px; overflow: hidden; box-shadow: 0 3px 15px rgba(0,0,0,0.06); }
-        .faq-question { padding: 20px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: var(--maroon); }
-        .faq-question i { color: var(--gold); transition: transform 0.3s; }
-        .faq-item.active .faq-question i { transform: rotate(180deg); }
-        .faq-answer { padding: 0 25px; max-height: 0; overflow: hidden; transition: all 0.3s; color: #555; }
-        .faq-item.active .faq-answer { padding: 0 25px 20px; max-height: 200px; }
+        .faq-section {
+            background: linear-gradient(135deg, #fff 0%, var(--cream) 100%);
+        }
+        .faq-container { 
+            max-width: 850px; 
+            margin: 0 auto; 
+        }
+        .faq-item { 
+            background: linear-gradient(135deg, #fff, #fffaf5); 
+            border-radius: 20px; 
+            margin-bottom: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 5px 25px rgba(128,0,32,0.06);
+            border: 1px solid rgba(212,175,55,0.15);
+            transition: all 0.3s;
+        }
+        .faq-item:hover {
+            box-shadow: 0 8px 35px rgba(128,0,32,0.1);
+        }
+        .faq-question { 
+            padding: 25px 30px; 
+            cursor: pointer; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            font-weight: 600; 
+            color: var(--maroon);
+            font-size: 1.05rem;
+            transition: all 0.3s;
+        }
+        .faq-question:hover {
+            background: rgba(212,175,55,0.05);
+        }
+        .faq-question i { 
+            color: var(--gold); 
+            transition: transform 0.4s;
+            font-size: 1.1rem;
+            background: rgba(212,175,55,0.15);
+            width: 35px; height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .faq-item.active .faq-question i { 
+            transform: rotate(180deg);
+            background: var(--gold);
+            color: var(--maroon);
+        }
+        .faq-answer { 
+            padding: 0 30px; 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: all 0.4s ease; 
+            color: var(--dark-light);
+            line-height: 1.8;
+        }
+        .faq-item.active .faq-answer { 
+            padding: 0 30px 25px; 
+            max-height: 300px; 
+        }
 
-        /* Blog */
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .blog-card { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s; }
-        .blog-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
-        .blog-img { height: 200px; background: linear-gradient(135deg, var(--maroon), var(--orange)); display: flex; align-items: center; justify-content: center; }
-        .blog-img i { font-size: 3rem; color: var(--gold); }
-        .blog-content { padding: 25px; }
-        .blog-content .date { color: var(--orange); font-size: 0.85rem; font-weight: 500; }
-        .blog-content h3 { color: var(--maroon); margin: 10px 0; font-size: 1.2rem; }
-        .blog-content p { color: #666; font-size: 0.95rem; }
-        .read-more { color: var(--maroon); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; }
+        /* BLOG */
+        .blog-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 35px; 
+        }
+        .blog-card { 
+            background: linear-gradient(135deg, #fff, #fffaf5); 
+            border-radius: 25px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 40px rgba(128,0,32,0.08); 
+            transition: all 0.4s;
+            border: 1px solid rgba(212,175,55,0.1);
+        }
+        .blog-card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 25px 60px rgba(128,0,32,0.15);
+            border-color: rgba(212,175,55,0.3);
+        }
+        .blog-img { 
+            height: 220px; 
+            background: linear-gradient(135deg, var(--maroon), var(--orange), var(--maroon-light)); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .blog-img::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .blog-img i { 
+            font-size: 3.5rem; 
+            color: var(--gold);
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 20px rgba(212,175,55,0.5);
+        }
+        .blog-content { 
+            padding: 30px; 
+        }
+        .blog-content .date { 
+            color: var(--orange); 
+            font-size: 0.85rem; 
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .blog-content h3 { 
+            color: var(--maroon); 
+            margin: 15px 0; 
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .blog-content p { 
+            color: var(--dark-light); 
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .read-more { 
+            color: var(--maroon); 
+            font-weight: 600; 
+            text-decoration: none; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        .read-more:hover {
+            color: var(--orange);
+            gap: 12px;
+        }
 
-        /* Contact */
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .contact-card { background: #fff; padding: 35px; border-radius: 20px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s; }
-        .contact-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
-        .contact-card i { font-size: 2.5rem; color: var(--maroon); margin-bottom: 15px; }
-        .contact-card h3 { color: var(--maroon); margin-bottom: 10px; }
-        .contact-card p { color: #666; }
-        .contact-card a { color: var(--orange); text-decoration: none; font-weight: 500; }
+        /* CONTACT */
+        .contact-section {
+            background: linear-gradient(135deg, var(--cream) 0%, #fff 50%, var(--cream) 100%);
+        }
+        .contact-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; 
+        }
+        .contact-card { 
+            background: linear-gradient(135deg, #fff, #fffaf5); 
+            padding: 40px; 
+            border-radius: 25px; 
+            text-align: center; 
+            box-shadow: 0 10px 40px rgba(128,0,32,0.08); 
+            transition: all 0.4s;
+            border: 1px solid rgba(212,175,55,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--maroon), var(--gold), var(--orange));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+        .contact-card:hover::before { transform: scaleX(1); }
+        .contact-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 20px 50px rgba(128,0,32,0.15);
+            border-color: rgba(212,175,55,0.3);
+        }
+        .contact-icon-wrapper {
+            width: 70px; height: 70px;
+            background: linear-gradient(135deg, rgba(128,0,32,0.08), rgba(212,175,55,0.08));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border: 2px solid rgba(212,175,55,0.2);
+            transition: all 0.4s;
+        }
+        .contact-card:hover .contact-icon-wrapper {
+            background: linear-gradient(135deg, var(--maroon), var(--maroon-light));
+            border-color: var(--gold);
+        }
+        .contact-card:hover .contact-icon-wrapper i {
+            color: var(--gold);
+        }
+        .contact-card i { 
+            font-size: 1.8rem; 
+            color: var(--maroon);
+            transition: all 0.4s;
+        }
+        .contact-card h3 { 
+            color: var(--maroon); 
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+        .contact-card p { 
+            color: var(--dark-light);
+            margin-bottom: 8px;
+        }
+        .contact-card a { 
+            color: var(--orange); 
+            text-decoration: none; 
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .contact-card a:hover {
+            color: var(--maroon);
+        }
 
-        /* Footer */
-        footer { background: var(--dark); color: #fff; padding: 50px 20px 20px; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 30px; }
-        .footer-section h3 { color: var(--gold); margin-bottom: 20px; font-size: 1.3rem; }
-        .footer-section p, .footer-section a { color: rgba(255,255,255,0.7); text-decoration: none; line-height: 2; }
-        .footer-section a:hover { color: var(--gold); }
-        .social-links { display: flex; gap: 15px; margin-top: 15px; }
-        .social-links a { width: 40px; height: 40px; background: rgba(212,175,55,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); transition: all 0.3s; }
-        .social-links a:hover { background: var(--gold); color: var(--maroon); }
-        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); }
+        /* FOOTER */
+        footer { 
+            background: linear-gradient(135deg, var(--dark), var(--dark-light)); 
+            color: #fff; 
+            padding: 70px 20px 25px;
+            position: relative;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--orange), var(--gold));
+        }
+        .footer-content { 
+            max-width: 1200px; margin: 0 auto; 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 50px; 
+            margin-bottom: 40px; 
+        }
+        .footer-section h3 { 
+            color: var(--gold); 
+            margin-bottom: 25px; 
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 40px; height: 2px;
+            background: var(--gold);
+        }
+        .footer-section p, .footer-section a { 
+            color: rgba(255,255,255,0.75); 
+            text-decoration: none; 
+            line-height: 2;
+            transition: all 0.3s;
+        }
+        .footer-section a:hover { 
+            color: var(--gold); 
+            padding-left: 5px;
+        }
+        .social-links { 
+            display: flex; 
+            gap: 15px; 
+            margin-top: 20px; 
+        }
+        .social-links a { 
+            width: 45px; height: 45px; 
+            background: rgba(212,175,55,0.15); 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: var(--gold); 
+            transition: all 0.3s;
+            border: 1px solid rgba(212,175,55,0.3);
+        }
+        .social-links a:hover { 
+            background: var(--gold); 
+            color: var(--maroon);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(212,175,55,0.4);
+        }
+        .footer-bottom { 
+            text-align: center; 
+            padding-top: 35px; 
+            border-top: 1px solid rgba(255,255,255,0.1); 
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+        .footer-bottom i {
+            color: var(--gold);
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
 
-        /* WhatsApp Float */
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.8rem; box-shadow: 0 5px 20px rgba(37,211,102,0.4); z-index: 999; transition: all 0.3s; text-decoration: none; animation: pulse 2s infinite; }
-        .whatsapp-float:hover { transform: scale(1.1); }
-        @keyframes pulse { 0%, 100% { box-shadow: 0 5px 20px rgba(37,211,102,0.4); } 50% { box-shadow: 0 5px 30px rgba(37,211,102,0.7); } }
+        /* WHATSAPP FLOAT */
+        .whatsapp-float { 
+            position: fixed; 
+            bottom: 30px; right: 30px; 
+            width: 65px; height: 65px; 
+            background: linear-gradient(135deg, #25D366, #128C7E); 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: #fff; 
+            font-size: 2rem; 
+            box-shadow: 0 5px 25px rgba(37,211,102,0.4); 
+            z-index: 999; 
+            transition: all 0.3s; 
+            text-decoration: none;
+            animation: pulse 2s infinite;
+            border: 3px solid rgba(255,255,255,0.3);
+        }
+        .whatsapp-float:hover { 
+            transform: scale(1.15); 
+            box-shadow: 0 8px 35px rgba(37,211,102,0.6);
+        }
+        @keyframes pulse { 
+            0%, 100% { box-shadow: 0 5px 25px rgba(37,211,102,0.4); } 
+            50% { box-shadow: 0 5px 35px rgba(37,211,102,0.7), 0 0 0 15px rgba(37,211,102,0.1); } 
+        }
 
-        /* Mobile */
+        /* MOBILE */
         @media (max-width: 768px) {
-            .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--maroon); flex-direction: column; padding: 20px; gap: 15px; }
+            .nav-links { 
+                display: none; 
+                position: absolute; 
+                top: 70px; left: 0; right: 0; 
+                background: linear-gradient(135deg, var(--maroon), var(--maroon-dark)); 
+                flex-direction: column; 
+                padding: 25px; 
+                gap: 18px;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            }
             .nav-links.active { display: flex; }
             .mobile-menu { display: block; }
-            .hero h1 { font-size: 2.2rem; }
-            .hero .tagline { font-size: 1.1rem; }
-            .about-grid { grid-template-columns: 1fr; }
-            section { padding: 50px 15px; }
-            .booking-section { padding: 40px 20px; }
+            .hero { padding: 100px 15px 50px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero .tagline { font-size: 1.3rem; }
+            .hero-features { gap: 25px; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-img { min-height: 300px; padding: 35px; }
+            section { padding: 60px 15px; }
+            .booking-section { padding: 50px 25px; border-radius: 25px; }
+            .booking-form { padding: 30px 25px; }
+            .section-title { font-size: 2rem; }
+            .services-grid, .gallery-grid, .blog-grid, .contact-grid { gap: 20px; }
+        }
+
+        /* SCROLL REVEAL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
+<base target="_blank">
 </head>
 <body>
+
+    <!-- Animated Particles Background -->
+    <div class="particles" id="particles"></div>
 
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">Shaikh Mehndi Art <span>Mehndi Jo Dil Ko Chhu Jaye</span></div>
+            <div class="logo">Shaikh Mehndi Art <small>Mehndi Jo Dil Ko Chhu Jaye</small></div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -178,75 +1060,110 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
+            <div class="hero-badge">✨ 10+ Years of Excellence</div>
             <h1>Shaikh Mehndi Art</h1>
             <p class="tagline">"Mehndi Jo Dil Ko Chhu Jaye"</p>
-            <p>Professional Mehndi Artist with 10 Years of Experience</p>
-            <p>Home Service Available All Over India</p>
-            <div class="hero-badges">
-                <span class="badge"><i class="fas fa-home"></i> Home Service</span>
-                <span class="badge"><i class="fas fa-paint-brush"></i> All Patterns</span>
-                <span class="badge"><i class="fas fa-calendar-check"></i> Online Booking</span>
+
+            <div class="divider">
+                <div class="divider-line"></div>
+                <i class="fas fa-spa"></i>
+                <div class="divider-line"></div>
             </div>
-            <a href="https://wa.me/917771962386" class="btn-primary btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
-            <a href="#booking" class="btn-primary">Book Online Now</a>
+
+            <p class="hero-subtitle">Professional Mehndi Artist with a Decade of Experience</p>
+            <p class="hero-subtitle">Premium Home Service Available All Over India</p>
+
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <i class="fas fa-home"></i>
+                    <span>Home Service</span>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>All Patterns</span>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-gem"></i>
+                    <span>Premium Quality</span>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Easy Booking</span>
+                </div>
+            </div>
+
+            <a href="https://wa.me/917771962386" class="btn-primary btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
+            <a href="#booking" class="btn-primary">
+                <i class="fas fa-calendar-alt"></i> Book Appointment
+            </a>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about">
-        <h2 class="section-title">About Me</h2>
-        <p class="section-subtitle">Passion, Experience & Dedication in Every Design</p>
+    <section id="about" class="about-section">
+        <h2 class="section-title reveal">About Me</h2>
+        <p class="section-subtitle reveal">Passion, Artistry & Dedication in Every Stroke</p>
         <div class="about-grid">
-            <div class="about-img">
-                <i class="fas fa-hand-sparkles"></i>
-                <h3>Samrin Shaikh</h3>
-                <p>Professional Mehndi Artist</p>
+            <div class="about-image-container reveal">
+                <div class="about-img">
+                    <i class="fas fa-hand-sparkles"></i>
+                    <h3>Samrin Shaikh</h3>
+                    <p>Professional Mehndi Artist</p>
+                    <div class="divider" style="margin: 20px 0;">
+                        <div class="divider-line"></div>
+                        <i class="fas fa-heart" style="color: var(--gold);"></i>
+                        <div class="divider-line"></div>
+                    </div>
+                    <p style="font-size: 0.95rem; opacity: 0.9;">Creating memories through art since 2016</p>
+                </div>
             </div>
-            <div class="about-text">
-                <h3>Creating Art That Touches Hearts</h3>
-                <p>Hello! I am <strong>Samrin Shaikh</strong>, a passionate mehndi artist dedicated to making every occasion special with beautiful henna designs. With <strong>10 years of experience</strong> in this field, I have had the privilege of adorning countless brides and clients with intricate and stunning mehndi patterns.</p>
-                <p>I provide <strong>all types of mehndi patterns</strong> — from traditional bridal designs to modern Arabic styles, from simple elegant patterns to heavy full-hand designs. Every design is crafted with love and attention to detail.</p>
-                <p>I offer <strong>home services all over India</strong>, so you can get your mehndi done in the comfort of your own home. For areas near Ujjain and Dewas, travel charges are included. For other cities, travel charges are applied separately.</p>
+            <div class="about-text reveal">
+                <h3>Art That Touches Hearts</h3>
+                <p>Hello! I am <strong style="color: var(--maroon);">Samrin Shaikh</strong>, a passionate mehndi artist dedicated to making every occasion special with beautiful henna designs. With <strong style="color: var(--maroon);">10 years of experience</strong> in this field, I have had the privilege of adorning countless brides and clients with intricate and stunning mehndi patterns.</p>
+                <p>I provide <strong style="color: var(--maroon);">all types of mehndi patterns</strong> — from traditional bridal designs to modern Arabic styles, from simple elegant patterns to heavy full-hand designs. Every design is crafted with love, precision, and attention to detail.</p>
+                <p>I offer <strong style="color: var(--maroon);">home services all over India</strong>, so you can get your mehndi done in the comfort of your own home. For areas near <strong>Ujjain and Dewas</strong>, travel charges are included. For other cities, travel charges are applied separately.</p>
                 <div class="experience-box">
                     <div class="years">10+</div>
-                    <div>Years of Experience</div>
+                    <p>Years of Experience</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" style="background: #fff;">
-        <h2 class="section-title">Our Services</h2>
-        <p class="section-subtitle">All Types of Mehndi Patterns for Every Occasion</p>
+    <section id="services" class="services-section">
+        <h2 class="section-title reveal">Our Services</h2>
+        <p class="section-subtitle reveal">All Types of Mehndi Patterns for Every Occasion</p>
         <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-ring"></i>
+            <div class="service-card reveal">
+                <div class="service-icon-wrapper"><i class="fas fa-ring"></i></div>
                 <h3>Bridal Mehndi</h3>
                 <p>Heavy and intricate full-hand, full-leg bridal designs with hidden names and special motifs. Perfect for your special day.</p>
             </div>
-            <div class="service-card">
-                <i class="fas fa-heart"></i>
+            <div class="service-card reveal">
+                <div class="service-icon-wrapper"><i class="fas fa-heart"></i></div>
                 <h3>Arabic Mehndi</h3>
                 <p>Modern Arabic style with bold strokes, floral patterns, and negative space designs. Trendy and elegant.</p>
             </div>
-            <div class="service-card">
-                <i class="fas fa-feather"></i>
+            <div class="service-card reveal">
+                <div class="service-icon-wrapper"><i class="fas fa-feather"></i></div>
                 <h3>Indo-Arabic Mehndi</h3>
                 <p>A beautiful blend of Indian traditional and Arabic modern styles. Best of both worlds.</p>
             </div>
-            <div class="service-card">
-                <i class="fas fa-gem"></i>
+            <div class="service-card reveal">
+                <div class="service-icon-wrapper"><i class="fas fa-gem"></i></div>
                 <h3>Rajasthani Mehndi</h3>
                 <p>Traditional Rajasthani patterns with detailed mirror work, peacocks, and dhol designs.</p>
             </div>
-            <div class="service-card">
-                <i class="fas fa-leaf"></i>
+            <div class="service-card reveal">
+                <div class="service-icon-wrapper"><i class="fas fa-leaf"></i></div>
                 <h3>Simple & Elegant</h3>
                 <p>Light and minimal designs for casual occasions, festivals, or office parties. Quick and beautiful.</p>
             </div>
-            <div class="service-card">
-                <i class="fas fa-footprints"></i>
+            <div class="service-card reveal">
+                <div class="service-icon-wrapper"><i class="fas fa-footprints"></i></div>
                 <h3>Feet Mehndi</h3>
                 <p>Specialized feet designs ranging from simple anklet styles to heavy bridal feet patterns.</p>
             </div>
@@ -255,9 +1172,9 @@
 
     <!-- Gallery Section -->
     <section id="gallery">
-        <h2 class="section-title">Photo Gallery</h2>
-        <p class="section-subtitle">A Glimpse of My Work — Replace with Your Photos!</p>
-        <div class="gallery-filters">
+        <h2 class="section-title reveal">Photo Gallery</h2>
+        <p class="section-subtitle reveal">A Glimpse of My Artistry — Replace with Your Photos!</p>
+        <div class="gallery-filters reveal">
             <button class="filter-btn active" onclick="filterGallery('all')">All</button>
             <button class="filter-btn" onclick="filterGallery('bridal')">Bridal</button>
             <button class="filter-btn" onclick="filterGallery('hands')">Hands</button>
@@ -265,136 +1182,142 @@
             <button class="filter-btn" onclick="filterGallery('simple')">Simple</button>
         </div>
         <div class="gallery-grid" id="galleryGrid">
-            <div class="gallery-item" data-category="bridal">
+            <div class="gallery-item reveal" data-category="bridal">
                 <i class="fas fa-ring"></i>
                 <span>Bridal Design 1</span>
             </div>
-            <div class="gallery-item" data-category="hands">
+            <div class="gallery-item reveal" data-category="hands">
                 <i class="fas fa-hand-sparkles"></i>
                 <span>Hand Design 1</span>
             </div>
-            <div class="gallery-item" data-category="feet">
+            <div class="gallery-item reveal" data-category="feet">
                 <i class="fas fa-footprints"></i>
                 <span>Feet Design 1</span>
             </div>
-            <div class="gallery-item" data-category="simple">
+            <div class="gallery-item reveal" data-category="simple">
                 <i class="fas fa-leaf"></i>
                 <span>Simple Design 1</span>
             </div>
-            <div class="gallery-item" data-category="bridal">
+            <div class="gallery-item reveal" data-category="bridal">
                 <i class="fas fa-ring"></i>
                 <span>Bridal Design 2</span>
             </div>
-            <div class="gallery-item" data-category="hands">
+            <div class="gallery-item reveal" data-category="hands">
                 <i class="fas fa-hand-sparkles"></i>
                 <span>Hand Design 2</span>
             </div>
-            <div class="gallery-item" data-category="feet">
+            <div class="gallery-item reveal" data-category="feet">
                 <i class="fas fa-footprints"></i>
                 <span>Feet Design 2</span>
             </div>
-            <div class="gallery-item" data-category="simple">
+            <div class="gallery-item reveal" data-category="simple">
                 <i class="fas fa-leaf"></i>
                 <span>Simple Design 2</span>
             </div>
         </div>
-        <p style="text-align:center; margin-top:30px; color:#888; font-style:italic;">
-            <i class="fas fa-info-circle"></i> Replace these placeholders with your actual high-quality photos by editing the HTML code.
+        <p style="text-align:center; margin-top:40px; color:#999; font-style:italic; font-size: 0.95rem;">
+            <i class="fas fa-info-circle" style="color: var(--gold);"></i> Replace these placeholders with your actual high-quality photos by editing the HTML code.
         </p>
     </section>
 
     <!-- Booking Section -->
-    <section id="booking">
-        <div class="booking-section">
-            <h2>Book Your Mehndi Appointment</h2>
-            <p style="opacity:0.9; max-width:600px; margin:0 auto;">Book your slot easily! Just fill the form below or WhatsApp us directly. Remember to book at least 2 days before your event date.</p>
+    <section id="booking" style="padding: 0;">
+        <div class="booking-section-wrapper">
+            <div class="booking-section">
+                <h2>Book Your Mehndi Appointment</h2>
+                <p style="opacity:0.9; max-width:650px; margin:0 auto; font-size: 1.05rem; line-height: 1.8;">
+                    Book your slot easily! Just fill the form below or WhatsApp us directly. Remember to book at least 2 days before your event date.
+                </p>
 
-            <div class="booking-info">
-                <div class="booking-info-item">
-                    <i class="fas fa-clock"></i>
-                    <h4>Booking Time</h4>
-                    <p>Book at least 2 days before your event. No bookings accepted 1 day before the date.</p>
+                <div class="booking-info">
+                    <div class="booking-info-item">
+                        <i class="fas fa-clock"></i>
+                        <h4>Booking Time</h4>
+                        <p>Book at least 2 days before your event. No bookings accepted 1 day before the date.</p>
+                    </div>
+                    <div class="booking-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Service Area</h4>
+                        <p>Home service available all over India. Travel charges included for Ujjain & Dewas nearby areas.</p>
+                    </div>
+                    <div class="booking-info-item">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h4>Pricing</h4>
+                        <p>Prices vary by design complexity. Contact us on WhatsApp for exact package details.</p>
+                    </div>
                 </div>
-                <div class="booking-info-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h4>Service Area</h4>
-                    <p>Home service available all over India. Travel charges included for Ujjain & Dewas nearby areas.</p>
-                </div>
-                <div class="booking-info-item">
-                    <i class="fas fa-money-bill-wave"></i>
-                    <h4>Pricing</h4>
-                    <p>Prices vary by design complexity. Contact us on WhatsApp for exact package details.</p>
-                </div>
-            </div>
 
-            <!-- Online Booking Form -->
-            <div class="booking-form">
-                <h3 style="color:var(--gold); margin-bottom:25px; text-align:center;"><i class="fas fa-calendar-plus"></i> Online Booking Form</h3>
-                <form id="bookingForm" onsubmit="handleBooking(event)">
-                    <div class="form-group">
-                        <label><i class="fas fa-user"></i> Your Name</label>
-                        <input type="text" id="bName" placeholder="Enter your full name" required>
+                <!-- Online Booking Form -->
+                <div class="booking-form">
+                    <h3 style="color:var(--gold); margin-bottom:30px; text-align:center; font-size: 1.5rem;">
+                        <i class="fas fa-calendar-plus"></i> Online Booking Form
+                    </h3>
+                    <form id="bookingForm" onsubmit="handleBooking(event)">
+                        <div class="form-group">
+                            <label><i class="fas fa-user" style="margin-right: 8px;"></i> Your Name</label>
+                            <input type="text" id="bName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-phone" style="margin-right: 8px;"></i> Phone Number</label>
+                            <input type="tel" id="bPhone" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-envelope" style="margin-right: 8px;"></i> Email (Optional)</label>
+                            <input type="email" id="bEmail" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> Your City / Area</label>
+                            <input type="text" id="bCity" placeholder="Enter your city" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-calendar" style="margin-right: 8px;"></i> Event Date</label>
+                            <input type="date" id="bDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-paint-brush" style="margin-right: 8px;"></i> Mehndi Type</label>
+                            <select id="bType" required>
+                                <option value="">Select Mehndi Type</option>
+                                <option value="bridal">Bridal Mehndi</option>
+                                <option value="arabic">Arabic Mehndi</option>
+                                <option value="rajasthani">Rajasthani Mehndi</option>
+                                <option value="indo-arabic">Indo-Arabic Mehndi</option>
+                                <option value="simple">Simple / Light</option>
+                                <option value="feet">Feet Mehndi Only</option>
+                                <option value="other">Other / Custom</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-home" style="margin-right: 8px;"></i> Service Type</label>
+                            <select id="bService" required>
+                                <option value="">Select Service Type</option>
+                                <option value="home">Home Service</option>
+                                <option value="studio">Studio Visit</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-comment" style="margin-right: 8px;"></i> Special Requests (Optional)</label>
+                            <textarea id="bMessage" placeholder="Any specific design requests, number of people, etc."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width:100%; border:none; cursor:pointer; font-size: 1.1rem;">
+                            <i class="fas fa-paper-plane"></i> Submit Booking Request
+                        </button>
+                    </form>
+                    <div id="bookingSuccess" style="display:none; margin-top:25px; padding:25px; background:rgba(37,211,102,0.15); border-radius:15px; border:2px solid #25D366;">
+                        <i class="fas fa-check-circle" style="color:#25D366; font-size:2.5rem;"></i>
+                        <h4 style="color:#25D366; margin-top:15px; font-size: 1.3rem;">Booking Request Sent!</h4>
+                        <p style="opacity:0.9; margin-top: 10px;">We will contact you on WhatsApp shortly to confirm your booking.</p>
                     </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-phone"></i> Phone Number</label>
-                        <input type="tel" id="bPhone" placeholder="Enter your phone number" required>
-                    </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-envelope"></i> Email (Optional)</label>
-                        <input type="email" id="bEmail" placeholder="Enter your email">
-                    </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-map-marker-alt"></i> Your City / Area</label>
-                        <input type="text" id="bCity" placeholder="Enter your city" required>
-                    </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-calendar"></i> Event Date</label>
-                        <input type="date" id="bDate" required>
-                    </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-paint-brush"></i> Mehndi Type</label>
-                        <select id="bType" required>
-                            <option value="">Select Mehndi Type</option>
-                            <option value="bridal">Bridal Mehndi</option>
-                            <option value="arabic">Arabic Mehndi</option>
-                            <option value="rajasthani">Rajasthani Mehndi</option>
-                            <option value="indo-arabic">Indo-Arabic Mehndi</option>
-                            <option value="simple">Simple / Light</option>
-                            <option value="feet">Feet Mehndi Only</option>
-                            <option value="other">Other / Custom</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-home"></i> Service Type</label>
-                        <select id="bService" required>
-                            <option value="">Select Service Type</option>
-                            <option value="home">Home Service</option>
-                            <option value="studio">Studio Visit</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label><i class="fas fa-comment"></i> Special Requests (Optional)</label>
-                        <textarea id="bMessage" placeholder="Any specific design requests, number of people, etc."></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary" style="width:100%; border:none; cursor:pointer;">
-                        <i class="fas fa-paper-plane"></i> Submit Booking Request
-                    </button>
-                </form>
-                <div id="bookingSuccess" style="display:none; margin-top:20px; padding:20px; background:rgba(37,211,102,0.2); border-radius:10px; border:1px solid #25D366;">
-                    <i class="fas fa-check-circle" style="color:#25D366; font-size:2rem;"></i>
-                    <h4 style="color:#25D366; margin-top:10px;">Booking Request Sent!</h4>
-                    <p style="opacity:0.9;">We will contact you on WhatsApp shortly to confirm your booking.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" style="background:#fff;">
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-subtitle">Everything you need to know before booking</p>
+    <section id="faq" class="faq-section">
+        <h2 class="section-title reveal">Frequently Asked Questions</h2>
+        <p class="section-subtitle reveal">Everything you need to know before booking</p>
         <div class="faq-container">
-            <div class="faq-item active">
+            <div class="faq-item active reveal">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     How many days before should I book? <i class="fas fa-chevron-down"></i>
                 </div>
@@ -402,7 +1325,7 @@
                     You should book at least 2 days before your event date. You can book anytime before that, but we do not accept bookings 1 day before the event.
                 </div>
             </div>
-            <div class="faq-item">
+            <div class="faq-item reveal">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     Do you provide home service? <i class="fas fa-chevron-down"></i>
                 </div>
@@ -410,7 +1333,7 @@
                     Yes! Home service is available all over India. For areas near Ujjain and Dewas, travel charges are included. For other cities, travel charges are applied separately.
                 </div>
             </div>
-            <div class="faq-item">
+            <div class="faq-item reveal">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     What types of mehndi do you offer? <i class="fas fa-chevron-down"></i>
                 </div>
@@ -418,7 +1341,7 @@
                     We offer all types of mehndi patterns including Bridal, Arabic, Indo-Arabic, Rajasthani, Simple & Elegant, and Feet Mehndi designs.
                 </div>
             </div>
-            <div class="faq-item">
+            <div class="faq-item reveal">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     How much time does it take? <i class="fas fa-chevron-down"></i>
                 </div>
@@ -426,7 +1349,7 @@
                     The duration depends on the design complexity. Simple designs take 30-60 minutes, while heavy bridal mehndi can take 3-5 hours. We will inform you the estimated time when you book.
                 </div>
             </div>
-            <div class="faq-item">
+            <div class="faq-item reveal">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     What are your prices? <i class="fas fa-chevron-down"></i>
                 </div>
@@ -434,7 +1357,7 @@
                     Prices vary depending on the design type and complexity. Please contact us on WhatsApp at 7771962386 for detailed package information and pricing.
                 </div>
             </div>
-            <div class="faq-item">
+            <div class="faq-item reveal">
                 <div class="faq-question" onclick="toggleFaq(this)">
                     Do I need to come to a studio? <i class="fas fa-chevron-down"></i>
                 </div>
@@ -447,10 +1370,10 @@
 
     <!-- Blog Section -->
     <section id="blog">
-        <h2 class="section-title">Mehndi Tips & Blog</h2>
-        <p class="section-subtitle">Learn more about mehndi care, trends, and traditions</p>
+        <h2 class="section-title reveal">Mehndi Tips & Blog</h2>
+        <p class="section-subtitle reveal">Learn more about mehndi care, trends, and traditions</p>
         <div class="blog-grid">
-            <div class="blog-card">
+            <div class="blog-card reveal">
                 <div class="blog-img"><i class="fas fa-sun"></i></div>
                 <div class="blog-content">
                     <span class="date">May 2026</span>
@@ -459,7 +1382,7 @@
                     <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="blog-card">
+            <div class="blog-card reveal">
                 <div class="blog-img"><i class="fas fa-heart"></i></div>
                 <div class="blog-content">
                     <span class="date">April 2026</span>
@@ -468,7 +1391,7 @@
                     <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="blog-card">
+            <div class="blog-card reveal">
                 <div class="blog-img"><i class="fas fa-spa"></i></div>
                 <div class="blog-content">
                     <span class="date">March 2026</span>
@@ -481,36 +1404,36 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" style="background:#fff;">
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="section-subtitle">We prefer WhatsApp, but you can also reach us via email or phone</p>
+    <section id="contact" class="contact-section">
+        <h2 class="section-title reveal">Get In Touch</h2>
+        <p class="section-subtitle reveal">We prefer WhatsApp, but you can also reach us via email or phone</p>
         <div class="contact-grid">
-            <div class="contact-card">
-                <i class="fab fa-whatsapp"></i>
+            <div class="contact-card reveal">
+                <div class="contact-icon-wrapper"><i class="fab fa-whatsapp"></i></div>
                 <h3>WhatsApp</h3>
                 <p>Preferred way to contact us!</p>
                 <a href="https://wa.me/917771962386" target="_blank">+91 7771962386</a>
             </div>
-            <div class="contact-card">
-                <i class="fas fa-phone"></i>
+            <div class="contact-card reveal">
+                <div class="contact-icon-wrapper"><i class="fas fa-phone"></i></div>
                 <h3>Phone Call</h3>
                 <p>Call us directly</p>
                 <a href="tel:+917771962386">+91 7771962386</a>
             </div>
-            <div class="contact-card">
-                <i class="fas fa-envelope"></i>
+            <div class="contact-card reveal">
+                <div class="contact-icon-wrapper"><i class="fas fa-envelope"></i></div>
                 <h3>Email</h3>
                 <p>Send us an email anytime</p>
                 <a href="mailto:shaikh.mehndiart@gmail.com">shaikh.mehndiart@gmail.com</a>
             </div>
-            <div class="contact-card">
-                <i class="fas fa-map-marker-alt"></i>
+            <div class="contact-card reveal">
+                <div class="contact-icon-wrapper"><i class="fas fa-map-marker-alt"></i></div>
                 <h3>Service Area</h3>
                 <p>Home Service Available</p>
                 <a href="#">All Over India</a>
             </div>
         </div>
-        <div style="text-align:center; margin-top:40px;">
+        <div style="text-align:center; margin-top:50px;">
             <a href="https://wa.me/917771962386" class="btn-primary btn-whatsapp" target="_blank" style="font-size:1.2rem; padding:18px 50px;">
                 <i class="fab fa-whatsapp"></i> Chat on WhatsApp Now
             </a>
@@ -557,7 +1480,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p> 2026 Shaikh Mehndi Art. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color:var(--gold);"></i> for Samrin Shaikh</p>
+            <p> 2026 Shaikh Mehndi Art. All Rights Reserved. | Designed with <i class="fas fa-heart"></i> for Samrin Shaikh</p>
         </div>
     </footer>
 
@@ -568,6 +1491,20 @@
 
     <!-- JavaScript -->
     <script>
+        // Create floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
         // Mobile Menu Toggle
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
@@ -619,27 +1556,38 @@
             const service = document.getElementById('bService').value;
             const message = document.getElementById('bMessage').value;
 
-            // Create WhatsApp message
-            const text = `Hello! I want to book a Mehndi appointment.%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*City:* ${city}%0A*Event Date:* ${date}%0A*Mehndi Type:* ${type}%0A*Service Type:* ${service}%0A*Special Requests:* ${message || 'None'}`;
+            const text = 'Hello! I want to book a Mehndi appointment.%0A%0A*Name:* ' + name + '%0A*Phone:* ' + phone + '%0A*City:* ' + city + '%0A*Event Date:* ' + date + '%0A*Mehndi Type:* ' + type + '%0A*Service Type:* ' + service + '%0A*Special Requests:* ' + (message || 'None');
 
-            // Open WhatsApp
-            window.open(`https://wa.me/917771962386?text=${text}`, '_blank');
+            window.open('https://wa.me/917771962386?text=' + text, '_blank');
 
-            // Show success message
             document.getElementById('bookingSuccess').style.display = 'block';
             document.getElementById('bookingForm').reset();
 
-            // Scroll to success message
             document.getElementById('bookingSuccess').scrollIntoView({ behavior: 'smooth' });
         }
+
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        window.addEventListener('scroll', reveal);
+        reveal();
 
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
             if (window.scrollY > 50) {
-                nav.style.background = 'rgba(128,0,32,0.98)';
+                nav.style.background = 'linear-gradient(135deg, rgba(128,0,32,0.98), rgba(74,0,18,0.98))';
             } else {
-                nav.style.background = 'rgba(128,0,32,0.95)';
+                nav.style.background = 'linear-gradient(135deg, rgba(128,0,32,0.95), rgba(74,0,18,0.95))';
             }
         });
 
